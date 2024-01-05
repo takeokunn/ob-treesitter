@@ -1,0 +1,36 @@
+#+STARTUP: content
+#+STARTUP: fold
+#+OPTIONS: ^:nil
+* ob-treesitter
+
+This org-mode babel extension enables you to execute tree-sitter code blocks.
+
+** Requirement
+
+You need to install [[https://github.com/tree-sitter/tree-sitter][tree-sitter]] to use this extension.
+
+** Install
+*** with Melpa
+yet
+*** with Manually
+Add ob-treesitter.el to your load-path and require.
+
+#+begin_src emacs-lisp
+  (add-to-list 'load-path "/path/to/ob-treesitter.el")
+  (require 'ob-treesitter)
+#+end_src
+** Configure
+add treesitter-mode:
+
+#+begin_src emacs-lisp
+  (define-derived-mode treesitter-mode prog-mode "treesitter")
+#+end_src
+
+add org-src-lang-modes:
+
+#+begin_src emacs-lisp
+  (eval-after-load "org" '(add-to-list 'org-src-lang-modes '("treesitter" . treesitter)))
+#+end_src
+** Example
+
+TBD
