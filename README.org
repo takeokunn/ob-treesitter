@@ -32,5 +32,41 @@ add org-src-lang-modes:
   (eval-after-load "org" '(add-to-list 'org-src-lang-modes '("treesitter" . treesitter)))
 #+end_src
 ** Example
+#+begin_src org
+  ,#+begin_src treesitter :lang php
+    <?php
 
-TBD
+    function add(int $a, int $b): int
+    {
+        return $a + $b;
+    }
+  ,#+end_src
+
+  ,#+RESULTS:
+  ,#+begin_example
+  (program [0, 0] - [5, 1]
+    (php_tag [0, 0] - [0, 5])
+    (function_definition [2, 0] - [5, 1]
+      name: (name [2, 9] - [2, 12])
+      parameters: (formal_parameters [2, 12] - [2, 28]
+        (simple_parameter [2, 13] - [2, 19]
+          type: (union_type [2, 13] - [2, 16]
+            (primitive_type [2, 13] - [2, 16]))
+          name: (variable_name [2, 17] - [2, 19]
+            (name [2, 18] - [2, 19])))
+        (simple_parameter [2, 21] - [2, 27]
+          type: (union_type [2, 21] - [2, 24]
+            (primitive_type [2, 21] - [2, 24]))
+          name: (variable_name [2, 25] - [2, 27]
+            (name [2, 26] - [2, 27]))))
+      return_type: (union_type [2, 30] - [2, 33]
+        (primitive_type [2, 30] - [2, 33]))
+      body: (compound_statement [3, 0] - [5, 1]
+        (return_statement [4, 4] - [4, 19]
+          (binary_expression [4, 11] - [4, 18]
+            left: (variable_name [4, 11] - [4, 13]
+              (name [4, 12] - [4, 13]))
+            right: (variable_name [4, 16] - [4, 18]
+              (name [4, 17] - [4, 18])))))))
+  ,#+end_example
+#+end_src
